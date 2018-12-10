@@ -196,11 +196,18 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="_SYncQPyNEeiX98bcgrgZzw" name="displayFiles"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_jFioYPyUEeiX98bcgrgZzw" name="org.projetpoo.client.library">
+  <packagedElement xmi:type="uml:Package" xmi:id="_jFioYPyUEeiX98bcgrgZzw" name="org.projetpoo.client.fileSystem">
     <packagedElement xmi:type="uml:Class" xmi:id="_XR9DwPpeEeihc7FoMuz50A" name="SystemExplorer">
+      <generalization xmi:type="uml:Generalization" xmi:id="_-_ml4PycEeiX98bcgrgZzw" general="_slmvwPycEeiX98bcgrgZzw"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_EkSY0PpgEeihc7FoMuz50A" name="getFiles"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_FnWYUPpgEeihc7FoMuz50A" name="getFile"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_G7HtUPpgEeihc7FoMuz50A" name="changeDirectory"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Ol6B0PycEeiX98bcgrgZzw" name="org.apache.commons.io">
+    <packagedElement xmi:type="uml:Class" xmi:id="_slmvwPycEeiX98bcgrgZzw" name="FileUtils">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yxLhMPycEeiX98bcgrgZzw" name="ListFiles"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YfHGIPydEeiX98bcgrgZzw" name="getFile"/>
     </packagedElement>
   </packagedElement>
 </uml:Model>
