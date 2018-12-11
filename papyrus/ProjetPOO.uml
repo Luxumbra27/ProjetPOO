@@ -258,4 +258,61 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_jwsfIf1NEeiXwP7XpkxQgg" name="authenticate" type="_Zax0MP1NEeiXwP7XpkxQgg" association="_jwN-AP1NEeiXwP7XpkxQgg"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_jwsfIv1NEeiXwP7XpkxQgg" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_jwN-AP1NEeiXwP7XpkxQgg"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_D-xSwPyWEei26PY-SUHcGA" client="_ziXqkPpMEeidFYO5kg13ww" supplier="_BSU6oPyWEei26PY-SUHcGA"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_HmN6kPyWEei26PY-SUHcGA" name="java.lang.thread">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_BSU6oPyWEei26PY-SUHcGA" name="Runnable"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_qee9IPyaEei26PY-SUHcGA" memberEnd="_qegLQPyaEei26PY-SUHcGA _qegyUPyaEei26PY-SUHcGA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qefkMPyaEei26PY-SUHcGA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qefkMfyaEei26PY-SUHcGA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_qegyUPyaEei26PY-SUHcGA" name="socketserver" type="_wxR5QPyMEei26PY-SUHcGA" association="_qee9IPyaEei26PY-SUHcGA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_4MSJ4PyaEei26PY-SUHcGA" name="org.projetpoo.server.communication">
+    <packagedElement xmi:type="uml:Class" xmi:id="_wxR5QPyMEei26PY-SUHcGA" name="SocketServer">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_qegLQPyaEei26PY-SUHcGA" name="nodeconnection" type="_JL-7UPySEei26PY-SUHcGA" association="_qee9IPyaEei26PY-SUHcGA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qegLQfyaEei26PY-SUHcGA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qegLQvyaEei26PY-SUHcGA" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_dghoAPyREei26PY-SUHcGA" name="start"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_e6azIPyREei26PY-SUHcGA" name="handleRequest"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JL-7UPySEei26PY-SUHcGA" name="NodeHandler">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GMnREvybEei26PY-SUHcGA" name="userdatabase" type="_xtPyQPyMEei26PY-SUHcGA" association="_GMmqAPybEei26PY-SUHcGA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GMn4IPybEei26PY-SUHcGA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GMn4IfybEei26PY-SUHcGA" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_42qjoPyaEei26PY-SUHcGA" name="org.projetpoo.server.data">
+    <packagedElement xmi:type="uml:Class" xmi:id="_xtPyQPyMEei26PY-SUHcGA" name="DatabaseConnection">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_HA538PyfEei26PY-SUHcGA" name="connection" type="__ToDMPyeEei26PY-SUHcGA" association="_HA4p0PyfEei26PY-SUHcGA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HA538fyfEei26PY-SUHcGA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HA538vyfEei26PY-SUHcGA" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_fGBXcPyXEei26PY-SUHcGA" name="checkExists"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_g5MlQPyXEei26PY-SUHcGA" name="addUser"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_pqW44PyXEei26PY-SUHcGA" name="getLastLocation"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sR4UwPyXEei26PY-SUHcGA" name="updateLocation"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Jd24APyeEei26PY-SUHcGA" name="getConnectedUsers"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_GMmqAPybEei26PY-SUHcGA" memberEnd="_GMnREvybEei26PY-SUHcGA _GMn4IvybEei26PY-SUHcGA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GMnREPybEei26PY-SUHcGA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GMnREfybEei26PY-SUHcGA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_GMn4IvybEei26PY-SUHcGA" name="nodeconnection" type="_JL-7UPySEei26PY-SUHcGA" association="_GMmqAPybEei26PY-SUHcGA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X_Z9QPybEei26PY-SUHcGA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X_cZgPybEei26PY-SUHcGA" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_QfRFQPyeEei26PY-SUHcGA" name="com.mysql.jdbc.Driver">
+    <packagedElement xmi:type="uml:Class" xmi:id="__ToDMPyeEei26PY-SUHcGA" name="Connection"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_HA4p0PyfEei26PY-SUHcGA" memberEnd="_HA538PyfEei26PY-SUHcGA _HA538_yfEei26PY-SUHcGA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HA5Q4PyfEei26PY-SUHcGA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HA5Q4fyfEei26PY-SUHcGA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HA538_yfEei26PY-SUHcGA" name="databaseconnection" type="_xtPyQPyMEei26PY-SUHcGA" association="_HA4p0PyfEei26PY-SUHcGA"/>
+  </packagedElement>
 </uml:Model>
