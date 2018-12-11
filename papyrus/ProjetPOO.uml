@@ -3,106 +3,6 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_z9jxwPpMEeidFYO5kg13ww">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_0uIdoPpNEeix5rhwQ8xYMw" name="GraphicalInterface">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_9v-70PpREeix5rhwQ8xYMw" name="fileexplorerwidget" type="_vLWVEPpOEeix5rhwQ8xYMw" aggregation="shared" association="_9v3nEPpREeix5rhwQ8xYMw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wD0UPpREeix5rhwQ8xYMw" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9wEbYPpREeix5rhwQ8xYMw" value="*"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="__Gs3IvpREeix5rhwQ8xYMw" name="communitywidget" type="_-I_ZEPpOEeix5rhwQ8xYMw" aggregation="shared" association="__GliYPpREeix5rhwQ8xYMw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__GyWsPpREeix5rhwQ8xYMw" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__GyWsfpREeix5rhwQ8xYMw" value="1"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="__nwVwvpREeix5rhwQ8xYMw" name="chatwidget" type="_eNMx4PpOEeix5rhwQ8xYMw" aggregation="shared" association="__nqPIPpREeix5rhwQ8xYMw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__n1OQPpREeix5rhwQ8xYMw"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__n11UPpREeix5rhwQ8xYMw" value="*"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_AqEuYvpSEeix5rhwQ8xYMw" name="userinfowidget" type="_gWuqMPpOEeix5rhwQ8xYMw" aggregation="shared" association="_Ap_O0PpSEeix5rhwQ8xYMw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AqJm4PpSEeix5rhwQ8xYMw" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AqKN8PpSEeix5rhwQ8xYMw" value="1"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_Ng9_8PpgEeihc7FoMuz50A" name="closeChat"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_RCrMIPpgEeihc7FoMuz50A" name="terminate"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_eCqQoPpgEeihc7FoMuz50A" name="switchToBackground"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_53e9EPpNEeix5rhwQ8xYMw" name="ManagementSystemConnection">
-    <generalization xmi:type="uml:Generalization" xmi:id="_b2w0EPpQEeix5rhwQ8xYMw" general="_Rd2fgPpQEeix5rhwQ8xYMw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_J9SBUPphEeihc7FoMuz50A" name="login"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_KuBhwPphEeihc7FoMuz50A" name="signup"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_94y2YPpNEeix5rhwQ8xYMw" name="UserInformation">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_YdgwkPphEeihc7FoMuz50A" name="nickname"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_AkRlMPpOEeix5rhwQ8xYMw" name="RemoteUserConnection">
-    <generalization xmi:type="uml:Generalization" xmi:id="_cofzAPpQEeix5rhwQ8xYMw" general="_Rd2fgPpQEeix5rhwQ8xYMw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_y64kEPpdEeihc7FoMuz50A" name="remoteuser" type="_wYkOwPpREeix5rhwQ8xYMw" aggregation="shared" association="_y60SoPpdEeihc7FoMuz50A">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_y65LIPpdEeihc7FoMuz50A" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_y65yMPpdEeihc7FoMuz50A" value="1"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_kepKsPpiEeihc7FoMuz50A" name="initiateChat"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_eNMx4PpOEeix5rhwQ8xYMw" name="ChatWidget">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_QuyHIPpdEeihc7FoMuz50A" name="chat" type="_IK14gPpPEeix5rhwQ8xYMw" association="_QurZcPpdEeihc7FoMuz50A">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qu2YkPpdEeihc7FoMuz50A" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Qu5b4PpdEeihc7FoMuz50A" value="1"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_rhMSUPpgEeihc7FoMuz50A" name="showMessageInfo"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_ChI_4PphEeihc7FoMuz50A" name="updateChatDisplay"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_gWuqMPpOEeix5rhwQ8xYMw" name="UserInfoWidget">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_fc0MYvpeEeihc7FoMuz50A" name="localuser" type="_sfwxMPpREeix5rhwQ8xYMw" aggregation="shared" association="_fcy-QPpeEeihc7FoMuz50A">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fc1agPpeEeihc7FoMuz50A" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fc1agfpeEeihc7FoMuz50A" value="1"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_sQlZ0vpeEeihc7FoMuz50A" name="managementsystemconnection" type="_53e9EPpNEeix5rhwQ8xYMw" association="_sQkLsPpeEeihc7FoMuz50A">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sQmn8PpeEeihc7FoMuz50A"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sQmn8fpeEeihc7FoMuz50A" value="1"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_ukUsIPpgEeihc7FoMuz50A" name="showUserStatus"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_vLWVEPpOEeix5rhwQ8xYMw" name="FileExplorerWidget">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_aCWHwfpeEeihc7FoMuz50A" name="systemexplorer" type="_XR9DwPpeEeihc7FoMuz50A" aggregation="shared" association="_aCU5oPpeEeihc7FoMuz50A">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aCWu0PpeEeihc7FoMuz50A" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aCX88PpeEeihc7FoMuz50A" value="1"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_6hQ0sPpfEeihc7FoMuz50A" name="showFiles"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_8L_4MPpfEeihc7FoMuz50A" name="selectDirectory"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_B9v0YPpgEeihc7FoMuz50A" name="selectFile"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_-I_ZEPpOEeix5rhwQ8xYMw" name="CommunityWidget">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_7Bqd8vpdEeihc7FoMuz50A" name="managementsystemconnection" type="_53e9EPpNEeix5rhwQ8xYMw" aggregation="shared" association="_7BoBsPpdEeihc7FoMuz50A">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7BthQPpdEeihc7FoMuz50A"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7BwkkPpdEeihc7FoMuz50A" value="1"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_eonn8vphEeihc7FoMuz50A" name="remoteuser" type="_AkRlMPpOEeix5rhwQ8xYMw" association="_eocBwPphEeihc7FoMuz50A">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eozOIPphEeihc7FoMuz50A"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eozOIfphEeihc7FoMuz50A" value="1"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_ITdZQPpgEeihc7FoMuz50A" name="updateUserList"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_2mLpwPpgEeihc7FoMuz50A" name="showNotification"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_IK14gPpPEeix5rhwQ8xYMw" name="Chat">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_mgfDcvpeEeihc7FoMuz50A" name="remoteuserconnection" type="_AkRlMPpOEeix5rhwQ8xYMw" association="_mgdOQPpeEeihc7FoMuz50A">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mggRkPpeEeihc7FoMuz50A"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mgg4oPpeEeihc7FoMuz50A" value="*"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_8kgCUPpgEeihc7FoMuz50A" name="sendMessage"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_9rmNQPpgEeihc7FoMuz50A" name="sendFile"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_G7YWkPphEeihc7FoMuz50A" name="addUserToChat"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_nS5bAPpiEeihc7FoMuz50A" name="endSession"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Rd2fgPpQEeix5rhwQ8xYMw" name="RemoteConnection">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_tUIksPpiEeihc7FoMuz50A" name="status"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_uNkHEPpiEeihc7FoMuz50A" name="open"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_u-qz4PpiEeihc7FoMuz50A" name="close"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_sfwxMPpREeix5rhwQ8xYMw" name="LocalUser">
-    <generalization xmi:type="uml:Generalization" xmi:id="_0cW0UPpREeix5rhwQ8xYMw" general="_94y2YPpNEeix5rhwQ8xYMw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_0HdIEPphEeihc7FoMuz50A" name="status"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_wYkOwPpREeix5rhwQ8xYMw" name="RemoteUser">
-    <generalization xmi:type="uml:Generalization" xmi:id="_z7rwMPpREeix5rhwQ8xYMw" general="_94y2YPpNEeix5rhwQ8xYMw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_xkBiAPphEeihc7FoMuz50A" name="remoteLocation"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_9v3nEPpREeix5rhwQ8xYMw" memberEnd="_9v-70PpREeix5rhwQ8xYMw _9wEbYfpREeix5rhwQ8xYMw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9v-UwPpREeix5rhwQ8xYMw" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9v-UwfpREeix5rhwQ8xYMw" key="nature" value="UML_Nature"/>
@@ -145,11 +45,6 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_7B9_8PpdEeihc7FoMuz50A" name="communitywidget" type="_-I_ZEPpOEeix5rhwQ8xYMw" association="_7BoBsPpdEeihc7FoMuz50A"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_XR9DwPpeEeihc7FoMuz50A" name="SystemExplorer">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_EkSY0PpgEeihc7FoMuz50A" name="getFiles"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FnWYUPpgEeihc7FoMuz50A" name="getFile"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_G7HtUPpgEeihc7FoMuz50A" name="changeDirectory"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_aCU5oPpeEeihc7FoMuz50A" memberEnd="_aCWHwfpeEeihc7FoMuz50A _aCX88fpeEeihc7FoMuz50A">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aCVgsPpeEeihc7FoMuz50A" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aCWHwPpeEeihc7FoMuz50A" key="nature" value="UML_Nature"/>
@@ -182,6 +77,186 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eonn8fphEeihc7FoMuz50A" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_eoz1MPphEeihc7FoMuz50A" name="communitywidget" type="_-I_ZEPpOEeix5rhwQ8xYMw" association="_eocBwPphEeihc7FoMuz50A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_AgQhUPySEeiX98bcgrgZzw" name="org.projetpoo.client.users">
+    <packagedElement xmi:type="uml:Class" xmi:id="_wYkOwPpREeix5rhwQ8xYMw" name="RemoteUser">
+      <generalization xmi:type="uml:Generalization" xmi:id="_z7rwMPpREeix5rhwQ8xYMw" general="_94y2YPpNEeix5rhwQ8xYMw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xkBiAPphEeihc7FoMuz50A" name="remoteLocation"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_94y2YPpNEeix5rhwQ8xYMw" name="UserInformation">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YdgwkPphEeihc7FoMuz50A" name="nickname"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_sfwxMPpREeix5rhwQ8xYMw" name="LocalUser">
+      <generalization xmi:type="uml:Generalization" xmi:id="_0cW0UPpREeix5rhwQ8xYMw" general="_94y2YPpNEeix5rhwQ8xYMw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0HdIEPphEeihc7FoMuz50A" name="status"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_vtaZwPySEeiX98bcgrgZzw" name="org.projetpoo.client.connection">
+    <packagedElement xmi:type="uml:Class" xmi:id="_AkRlMPpOEeix5rhwQ8xYMw" name="RemoteUserConnection">
+      <generalization xmi:type="uml:Generalization" xmi:id="_cofzAPpQEeix5rhwQ8xYMw" general="_Rd2fgPpQEeix5rhwQ8xYMw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_y64kEPpdEeihc7FoMuz50A" name="remoteuser" type="_wYkOwPpREeix5rhwQ8xYMw" aggregation="shared" association="_y60SoPpdEeihc7FoMuz50A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_y65LIPpdEeihc7FoMuz50A" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_y65yMPpdEeihc7FoMuz50A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_kepKsPpiEeihc7FoMuz50A" name="initiateChat"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_IK14gPpPEeix5rhwQ8xYMw" name="Chat">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_mgfDcvpeEeihc7FoMuz50A" name="remoteuserconnection" type="_AkRlMPpOEeix5rhwQ8xYMw" association="_mgdOQPpeEeihc7FoMuz50A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mggRkPpeEeihc7FoMuz50A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mgg4oPpeEeihc7FoMuz50A" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_8kgCUPpgEeihc7FoMuz50A" name="sendMessage"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_9rmNQPpgEeihc7FoMuz50A" name="sendFile"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_G7YWkPphEeihc7FoMuz50A" name="addUserToChat"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nS5bAPpiEeihc7FoMuz50A" name="endSession"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_53e9EPpNEeix5rhwQ8xYMw" name="ManagementSystemConnection">
+      <generalization xmi:type="uml:Generalization" xmi:id="_b2w0EPpQEeix5rhwQ8xYMw" general="_Rd2fgPpQEeix5rhwQ8xYMw"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_J9SBUPphEeihc7FoMuz50A" name="login"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_KuBhwPphEeihc7FoMuz50A" name="signup"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Rd2fgPpQEeix5rhwQ8xYMw" name="RemoteConnection">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_tUIksPpiEeihc7FoMuz50A" name="status"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_uNkHEPpiEeihc7FoMuz50A" name="open"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_u-qz4PpiEeihc7FoMuz50A" name="close"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_wLYvMPySEeiX98bcgrgZzw" name="org.projetpoo.client.interface">
+    <packagedElement xmi:type="uml:Class" xmi:id="_eNMx4PpOEeix5rhwQ8xYMw" name="ChatWidget">
+      <generalization xmi:type="uml:Generalization" xmi:id="_k0YM8PyNEeiX98bcgrgZzw" general="_xiEScPyLEeiX98bcgrgZzw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_QuyHIPpdEeihc7FoMuz50A" name="chat" type="_IK14gPpPEeix5rhwQ8xYMw" association="_QurZcPpdEeihc7FoMuz50A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qu2YkPpdEeihc7FoMuz50A" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Qu5b4PpdEeihc7FoMuz50A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rhMSUPpgEeihc7FoMuz50A" name="showMessageInfo"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ChI_4PphEeihc7FoMuz50A" name="updateChatDisplay"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_-I_ZEPpOEeix5rhwQ8xYMw" name="CommunityWidget">
+      <generalization xmi:type="uml:Generalization" xmi:id="_u5qa4PyNEeiX98bcgrgZzw" general="_xiEScPyLEeiX98bcgrgZzw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_7Bqd8vpdEeihc7FoMuz50A" name="managementsystemconnection" type="_53e9EPpNEeix5rhwQ8xYMw" aggregation="shared" association="_7BoBsPpdEeihc7FoMuz50A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7BthQPpdEeihc7FoMuz50A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7BwkkPpdEeihc7FoMuz50A" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_eonn8vphEeihc7FoMuz50A" name="remoteuser" type="_AkRlMPpOEeix5rhwQ8xYMw" association="_eocBwPphEeihc7FoMuz50A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eozOIPphEeihc7FoMuz50A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eozOIfphEeihc7FoMuz50A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ITdZQPpgEeihc7FoMuz50A" name="updateUserList"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_2mLpwPpgEeihc7FoMuz50A" name="showNotification"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_xiEScPyLEeiX98bcgrgZzw" name="Widget">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_EaTHQPyNEeiX98bcgrgZzw" name="println"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_vLWVEPpOEeix5rhwQ8xYMw" name="FileExplorerWidget">
+      <generalization xmi:type="uml:Generalization" xmi:id="_f9VlgPyNEeiX98bcgrgZzw" general="_xiEScPyLEeiX98bcgrgZzw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_aCWHwfpeEeihc7FoMuz50A" name="systemexplorer" type="_XR9DwPpeEeihc7FoMuz50A" aggregation="shared" association="_aCU5oPpeEeihc7FoMuz50A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aCWu0PpeEeihc7FoMuz50A" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aCX88PpeEeihc7FoMuz50A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_6hQ0sPpfEeihc7FoMuz50A" name="showFiles"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_8L_4MPpfEeihc7FoMuz50A" name="selectDirectory"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_B9v0YPpgEeihc7FoMuz50A" name="selectFile"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0uIdoPpNEeix5rhwQ8xYMw" name="GraphicalInterface">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9v-70PpREeix5rhwQ8xYMw" name="fileexplorerwidget" type="_vLWVEPpOEeix5rhwQ8xYMw" aggregation="shared" association="_9v3nEPpREeix5rhwQ8xYMw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9wD0UPpREeix5rhwQ8xYMw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9wEbYPpREeix5rhwQ8xYMw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__Gs3IvpREeix5rhwQ8xYMw" name="communitywidget" type="_-I_ZEPpOEeix5rhwQ8xYMw" aggregation="shared" association="__GliYPpREeix5rhwQ8xYMw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__GyWsPpREeix5rhwQ8xYMw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__GyWsfpREeix5rhwQ8xYMw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__nwVwvpREeix5rhwQ8xYMw" name="chatwidget" type="_eNMx4PpOEeix5rhwQ8xYMw" aggregation="shared" association="__nqPIPpREeix5rhwQ8xYMw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__n1OQPpREeix5rhwQ8xYMw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__n11UPpREeix5rhwQ8xYMw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_AqEuYvpSEeix5rhwQ8xYMw" name="userinfowidget" type="_gWuqMPpOEeix5rhwQ8xYMw" aggregation="shared" association="_Ap_O0PpSEeix5rhwQ8xYMw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AqJm4PpSEeix5rhwQ8xYMw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AqKN8PpSEeix5rhwQ8xYMw" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Ng9_8PpgEeihc7FoMuz50A" name="closeChat"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_RCrMIPpgEeihc7FoMuz50A" name="terminate"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_eCqQoPpgEeihc7FoMuz50A" name="switchToBackground"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gWuqMPpOEeix5rhwQ8xYMw" name="UserInfoWidget">
+      <generalization xmi:type="uml:Generalization" xmi:id="_jnY1YPyNEeiX98bcgrgZzw" general="_xiEScPyLEeiX98bcgrgZzw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_fc0MYvpeEeihc7FoMuz50A" name="localuser" type="_sfwxMPpREeix5rhwQ8xYMw" aggregation="shared" association="_fcy-QPpeEeihc7FoMuz50A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fc1agPpeEeihc7FoMuz50A" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fc1agfpeEeihc7FoMuz50A" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_sQlZ0vpeEeihc7FoMuz50A" name="managementsystemconnection" type="_53e9EPpNEeix5rhwQ8xYMw" association="_sQkLsPpeEeihc7FoMuz50A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sQmn8PpeEeihc7FoMuz50A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sQmn8fpeEeihc7FoMuz50A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ukUsIPpgEeihc7FoMuz50A" name="showUserStatus"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QXCbgPyMEeiX98bcgrgZzw" name="FileReceivedWidget">
+      <generalization xmi:type="uml:Generalization" xmi:id="_h9ffYPyNEeiX98bcgrgZzw" general="_xiEScPyLEeiX98bcgrgZzw"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-6cMUPyMEeiX98bcgrgZzw" name="openFile"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_SYncQPyNEeiX98bcgrgZzw" name="displayFiles"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_jFioYPyUEeiX98bcgrgZzw" name="org.projetpoo.client.fileSystem">
+    <packagedElement xmi:type="uml:Class" xmi:id="_XR9DwPpeEeihc7FoMuz50A" name="SystemExplorer">
+      <generalization xmi:type="uml:Generalization" xmi:id="_-_ml4PycEeiX98bcgrgZzw" general="_slmvwPycEeiX98bcgrgZzw"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_EkSY0PpgEeihc7FoMuz50A" name="getFiles"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_FnWYUPpgEeihc7FoMuz50A" name="getFile"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_G7HtUPpgEeihc7FoMuz50A" name="changeDirectory"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Ol6B0PycEeiX98bcgrgZzw" name="org.apache.commons.io">
+    <packagedElement xmi:type="uml:Class" xmi:id="_slmvwPycEeiX98bcgrgZzw" name="FileUtils">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yxLhMPycEeiX98bcgrgZzw" name="ListFiles"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YfHGIPydEeiX98bcgrgZzw" name="getFile"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_d9_S8P1IEeiXwP7XpkxQgg" name="Interaction19">
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_p3R1IP1IEeiXwP7XpkxQgg" name="Lifeline1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_3_0AoP1JEeiXwP7XpkxQgg" name="ChatSystem">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_WvAR0P1KEeiXwP7XpkxQgg" name="CheckFilesReceived"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_mcL8YP1KEeiXwP7XpkxQgg" name="SendMessage"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_wBSOYP1KEeiXwP7XpkxQgg" name="SeeCommunity"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_3vOKcP1KEeiXwP7XpkxQgg" name="ExploreFiles"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_WUHQIP1LEeiXwP7XpkxQgg" name="SendFiles"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_mqnvEP1MEeiXwP7XpkxQgg" name="&lt;&lt;include>>" client="_WUHQIP1LEeiXwP7XpkxQgg" supplier="_3vOKcP1KEeiXwP7XpkxQgg"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Zax0MP1NEeiXwP7XpkxQgg" name="Authenticate"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_AuCVAP1KEeiXwP7XpkxQgg" name="User"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_HFbC8P1MEeiXwP7XpkxQgg" memberEnd="_HFrhoP1MEeiXwP7XpkxQgg _HFt94P1MEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HFqTgP1MEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HFqTgf1MEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HFrhoP1MEeiXwP7XpkxQgg" name="sendmessage" type="_mcL8YP1KEeiXwP7XpkxQgg" association="_HFbC8P1MEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HFt94P1MEeiXwP7XpkxQgg" name="user" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_HFbC8P1MEeiXwP7XpkxQgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MS5NYP1MEeiXwP7XpkxQgg" memberEnd="_MTId8v1MEeiXwP7XpkxQgg _MTJFAP1MEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MTId8P1MEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MTId8f1MEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MTId8v1MEeiXwP7XpkxQgg" name="sendfiles" type="_WUHQIP1LEeiXwP7XpkxQgg" association="_MS5NYP1MEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MTJFAP1MEeiXwP7XpkxQgg" name="user" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_MS5NYP1MEeiXwP7XpkxQgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NMzQ4P1MEeiXwP7XpkxQgg" memberEnd="_NNDIgv1MEeiXwP7XpkxQgg _NNDIg_1MEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NNDIgP1MEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NNDIgf1MEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NNDIgv1MEeiXwP7XpkxQgg" name="seecommunity" type="_wBSOYP1KEeiXwP7XpkxQgg" association="_NMzQ4P1MEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NNDIg_1MEeiXwP7XpkxQgg" name="user" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_NMzQ4P1MEeiXwP7XpkxQgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QkCScP1MEeiXwP7XpkxQgg" memberEnd="_QkUmUv1MEeiXwP7XpkxQgg _QkVNYP1MEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QkUmUP1MEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QkUmUf1MEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QkUmUv1MEeiXwP7XpkxQgg" name="checkfilesreceived" type="_WvAR0P1KEeiXwP7XpkxQgg" association="_QkCScP1MEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QkVNYP1MEeiXwP7XpkxQgg" name="user" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_QkCScP1MEeiXwP7XpkxQgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_jwN-AP1NEeiXwP7XpkxQgg" memberEnd="_jwsfIf1NEeiXwP7XpkxQgg _jwsfIv1NEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jwr4EP1NEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jwsfIP1NEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_jwsfIf1NEeiXwP7XpkxQgg" name="authenticate" type="_Zax0MP1NEeiXwP7XpkxQgg" association="_jwN-AP1NEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_jwsfIv1NEeiXwP7XpkxQgg" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_jwN-AP1NEeiXwP7XpkxQgg"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_D-xSwPyWEei26PY-SUHcGA" client="_ziXqkPpMEeidFYO5kg13ww" supplier="_BSU6oPyWEei26PY-SUHcGA"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_HmN6kPyWEei26PY-SUHcGA" name="java.lang.thread">
