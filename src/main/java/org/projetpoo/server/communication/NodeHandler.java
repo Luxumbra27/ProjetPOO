@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.lang.Runnable;
+import java.util.concurrent.TimeUnit;
 
 public class NodeHandler implements Runnable {
 
@@ -20,8 +21,11 @@ public class NodeHandler implements Runnable {
 
     public void run(){
         try {
+            _socket.getRemoteSocketAddress();
             System.out.println("Recv: " + _in.readLine());
             _out.println("Hello from server.");
+            TimeUnit.SECONDS.sleep(5);
+            _out.println("After message.");
         } catch (Exception e) {
             e.printStackTrace();
         }

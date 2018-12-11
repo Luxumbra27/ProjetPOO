@@ -20,9 +20,10 @@ public class TCPServer {
         System.out.println("Listening on port " + _port);
         while (true) {
 
+            NodeHandler handler = new NodeHandler(_serverSocket.accept());
+
             System.out.println("New client connected");
 
-            NodeHandler handler = new NodeHandler(_serverSocket.accept());
             Thread thread = new Thread(handler);
             thread.start();
         }
