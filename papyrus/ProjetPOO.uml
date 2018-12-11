@@ -210,4 +210,52 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="_YfHGIPydEeiX98bcgrgZzw" name="getFile"/>
     </packagedElement>
   </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_d9_S8P1IEeiXwP7XpkxQgg" name="Interaction19">
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_p3R1IP1IEeiXwP7XpkxQgg" name="Lifeline1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_3_0AoP1JEeiXwP7XpkxQgg" name="ChatSystem">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_WvAR0P1KEeiXwP7XpkxQgg" name="CheckFilesReceived"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_mcL8YP1KEeiXwP7XpkxQgg" name="SendMessage"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_wBSOYP1KEeiXwP7XpkxQgg" name="SeeCommunity"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_3vOKcP1KEeiXwP7XpkxQgg" name="ExploreFiles"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_WUHQIP1LEeiXwP7XpkxQgg" name="SendFiles"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_mqnvEP1MEeiXwP7XpkxQgg" name="&lt;&lt;include>>" client="_WUHQIP1LEeiXwP7XpkxQgg" supplier="_3vOKcP1KEeiXwP7XpkxQgg"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Zax0MP1NEeiXwP7XpkxQgg" name="Authenticate"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_AuCVAP1KEeiXwP7XpkxQgg" name="User"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_HFbC8P1MEeiXwP7XpkxQgg" memberEnd="_HFrhoP1MEeiXwP7XpkxQgg _HFt94P1MEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HFqTgP1MEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HFqTgf1MEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HFrhoP1MEeiXwP7XpkxQgg" name="sendmessage" type="_mcL8YP1KEeiXwP7XpkxQgg" association="_HFbC8P1MEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HFt94P1MEeiXwP7XpkxQgg" name="user" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_HFbC8P1MEeiXwP7XpkxQgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MS5NYP1MEeiXwP7XpkxQgg" memberEnd="_MTId8v1MEeiXwP7XpkxQgg _MTJFAP1MEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MTId8P1MEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MTId8f1MEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MTId8v1MEeiXwP7XpkxQgg" name="sendfiles" type="_WUHQIP1LEeiXwP7XpkxQgg" association="_MS5NYP1MEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MTJFAP1MEeiXwP7XpkxQgg" name="user" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_MS5NYP1MEeiXwP7XpkxQgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NMzQ4P1MEeiXwP7XpkxQgg" memberEnd="_NNDIgv1MEeiXwP7XpkxQgg _NNDIg_1MEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NNDIgP1MEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NNDIgf1MEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NNDIgv1MEeiXwP7XpkxQgg" name="seecommunity" type="_wBSOYP1KEeiXwP7XpkxQgg" association="_NMzQ4P1MEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NNDIg_1MEeiXwP7XpkxQgg" name="user" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_NMzQ4P1MEeiXwP7XpkxQgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QkCScP1MEeiXwP7XpkxQgg" memberEnd="_QkUmUv1MEeiXwP7XpkxQgg _QkVNYP1MEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QkUmUP1MEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QkUmUf1MEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QkUmUv1MEeiXwP7XpkxQgg" name="checkfilesreceived" type="_WvAR0P1KEeiXwP7XpkxQgg" association="_QkCScP1MEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QkVNYP1MEeiXwP7XpkxQgg" name="user" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_QkCScP1MEeiXwP7XpkxQgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_jwN-AP1NEeiXwP7XpkxQgg" memberEnd="_jwsfIf1NEeiXwP7XpkxQgg _jwsfIv1NEeiXwP7XpkxQgg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jwr4EP1NEeiXwP7XpkxQgg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jwsfIP1NEeiXwP7XpkxQgg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_jwsfIf1NEeiXwP7XpkxQgg" name="authenticate" type="_Zax0MP1NEeiXwP7XpkxQgg" association="_jwN-AP1NEeiXwP7XpkxQgg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_jwsfIv1NEeiXwP7XpkxQgg" type="_AuCVAP1KEeiXwP7XpkxQgg" association="_jwN-AP1NEeiXwP7XpkxQgg"/>
+  </packagedElement>
 </uml:Model>
