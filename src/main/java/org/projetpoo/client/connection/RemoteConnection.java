@@ -53,13 +53,5 @@ public class RemoteConnection {
 			e.printStackTrace();
 		}
 	}
-	public static void main (String[] args) throws Exception {
-		RemoteConnection test = new RemoteConnection();
-		test.connect();
-		TimeUnit.SECONDS.sleep(8);
-		test.printReply();
-		test.close();
-		
-	}
 
 }
