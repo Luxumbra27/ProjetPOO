@@ -3,6 +3,7 @@ package org.projetpoo.client.connection;
 import org.projetpoo.client.gui.MainWindow;
 
 import java.net.ServerSocket;
+import java.net.Socket;
 
 
 public class NodeServer {
@@ -22,7 +23,8 @@ public class NodeServer {
         System.out.println("Client listening on port " + _port);
         while (true) {
 
-            Chat chat = new Chat(_serverSocket.accept(), _mainWindow);
+            Socket sock = _serverSocket.accept();
+            Chat chat = new Chat(sock, _mainWindow, _mainWindow.managementSystem.getRemoteUserBySocket(sock));
 
             Thread thread = new Thread(chat);
             thread.start();

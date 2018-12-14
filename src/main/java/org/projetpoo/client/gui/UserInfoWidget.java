@@ -1,21 +1,59 @@
 package org.projetpoo.client.gui;
 
-import org.projetpoo.client.connection.RemoteConnection;
+import org.projetpoo.client.connection.ManagementConnection;
 
+import javax.swing.*;
 import java.awt.*;
-import java.net.Inet4Address;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class UserInfoWidget extends Widget {
+public class UserInfoWidget extends Widget implements ActionListener {
 
-    public RemoteConnection _serverConnection;
+    private ManagementConnection _managementSystem;
+    private JButton _connectButton;
+    private JTextArea _info;
+    private JTextField _nicknameField;
 
-    public UserInfoWidget(Color g, RemoteConnection remote) {
-        super(g);
-        _serverConnection = remote;
+    public UserInfoWidget(Container container, ManagementConnection managementSystem) {
+        super(container);
+        this._managementSystem = managementSystem;
+
+        _nicknameField = new JTextField();
+
+        _info = new JTextArea();
+        _info.setEditable(false);
+
+        _connectButton = new JButton("Connect.");
+        _connectButton.addActionListener(this);
+
+        setLayout(new BorderLayout());
+
+        add(_nicknameField, BorderLayout.NORTH);
+        add(_info, BorderLayout.CENTER);
+        add(_connectButton, BorderLayout.SOUTH);
 
     }
 
-    public void connectButton() throws Exception{
-        _serverConnection.connect();
+
+    public void println(String str){
+        _info.append(str + System.lineSeparator());
+    }
+
+    public void actionPerformed(ActionEvent arg){
+        if (arg.getSource() == _connectButton){
+            try {
+                if (!_managementSystem.isConnected()){
+                    System.out.println("[DBG] Attempting connection.");
+                    _managementSystem.connect();
+                    System.out.println("[DBG] Sending nickname.");
+                    _managementSystem.sendMessage("[NICKNAME]");
+                    _managementSystem.sendMessage(_nicknameField.getText());
+                }
+                println("You are connected !");
+            } catch (Exception e){
+                e.printStackTrace();
+                println("Connection problem.");
+            }
+        }
     }
 }

@@ -5,16 +5,15 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Widget extends JTextArea {
+public class Widget extends JPanel {
 
+    protected Container _container;
 
-    public Widget(Color g) {
-        setBackground(g);
-        setEditable(false);
+    public Widget(Container container) {
+        super();
+        this._container = container;
+        _container.add(this);
 
     }
 
-    public void println(String str) {
-        append(str + "\n");
-    }
 }

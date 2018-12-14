@@ -21,11 +21,14 @@ public class NodeHandler implements Runnable {
 
     public void run(){
         try {
-            _socket.getRemoteSocketAddress();
-            System.out.println("Recv: " + _in.readLine());
-            _out.println("Hello from server.");
-            TimeUnit.SECONDS.sleep(5);
-            _out.println("After message.");
+            while (true){
+                System.out.println(_socket.getRemoteSocketAddress());
+                System.out.println("Recv: " + _in.readLine());
+                //_out.println("Hello from server.");
+                TimeUnit.SECONDS.sleep(1);
+                //_out.println("After message.");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
