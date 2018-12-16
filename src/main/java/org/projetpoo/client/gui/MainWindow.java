@@ -2,6 +2,7 @@ package org.projetpoo.client.gui;
 
 
 import org.projetpoo.client.connection.ManagementConnection;
+import org.projetpoo.client.connection.NodeServer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,11 +13,19 @@ public class MainWindow extends JFrame{
     public UserInfoWidget userInfoWidget;
     public JPanel contentPane;
     public ManagementConnection managementSystem;
+    public CommunityWidget communityWidget;
+
+    private static final int MANAGEMENT_PORT = 2000;
+    private static final String MANAGEMENT_HOSTNAME = "localhost";
+    private static final int WINDOW_HEIGHT = 400;
+    private static final int WINDOW_WIDTH = 800;
+    private static final int NODE_LISTEN_PORT = 1234;
 
     public MainWindow() throws Exception {
 
-        setTitle("ProjetPOO Clavardage");
-        setSize(1200, 800);
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+        setTitle("POO TeamChat");
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -24,13 +33,14 @@ public class MainWindow extends JFrame{
         contentPane.setBackground(Color.BLUE);
 
         setContentPane(contentPane);
-        setLayout(new GridLayout(3, 2));
+        setLayout(new GridBagLayout());
 
-        managementSystem = new ManagementConnection("localhost", 1234);
+        managementSystem = new ManagementConnection(MANAGEMENT_HOSTNAME, MANAGEMENT_PORT);
 
         userInfoWidget = new UserInfoWidget(getContentPane(), managementSystem);
         userInfoWidget.println("Hello !");
 
+        communityWidget = new CommunityWidget(this, managementSystem);
 
 
         setVisible(true);
@@ -46,6 +56,10 @@ public class MainWindow extends JFrame{
 
         MainWindow window = new MainWindow();
 
+        NodeServer nodeServer = new NodeServer(NODE_LISTEN_PORT, window);
+
+        Thread thread = new Thread(nodeServer);
+        thread.start();
 
     }
 }

@@ -28,7 +28,6 @@ public class ManagementConnection{
 	}
 
 	public void updateConnectedUsers() throws Exception {
-		_out.println("[CMD]");
 		_out.println("getConnectedUsers");
 		ArrayList<RemoteUser> lst = null;
 		try {
@@ -37,7 +36,7 @@ public class ManagementConnection{
 			e.printStackTrace();
 		}
 		if (lst == null){
-			throw new Exception("Could not retrieve connected users list.");
+ 			throw new Exception("Could not retrieve connected users list.");
 		} else {
 			_connectedList = lst;
 		}
@@ -55,6 +54,15 @@ public class ManagementConnection{
 		}
 	}
 
+	public String getReply(){
+		try {
+			return _in.readLine();
+		} catch (Exception e){
+			e.printStackTrace();
+			return "";
+		}
+	}
+
 	public void sendMessage(String str){
 	    _out.println(str);
     }
@@ -68,11 +76,12 @@ public class ManagementConnection{
 		_out = new PrintWriter(_socket.getOutputStream(),true);
 		_outObj = new ObjectOutputStream(_socket.getOutputStream());
 		_in = new BufferedReader(new InputStreamReader(_socket.getInputStream()));
-		//_inObj = new ObjectInputStream(new BufferedInputStream(_socket.getInputStream()));
+		_inObj = new ObjectInputStream(_socket.getInputStream());
+		_out.println(""); // prevents initial bug
 
     }
 
-    public RemoteUser getRemoteUserBySocket(Socket sock) throws Exception{
+    public RemoteUser getRemoteUserBySocket(Socket sock){
 		try{
 			updateConnectedUsers();
 		} catch (Exception e){
@@ -80,11 +89,11 @@ public class ManagementConnection{
 		}
 		for (RemoteUser user: _connectedList){
 
-			if (sock.getInetAddress().getHostName().equals(user.getStringIP()) && (sock.getPort() == user.getPort())){
+			if (sock.getInetAddress().getHostName().equals(user.getHostname()) && (sock.getPort() == user.getPort())){
 				return user;
 			}
-			throw new Exception("User not found in the connected users.");
 		}
+		System.out.println("[DBG] Can't find user in actual list.");
 		return null;
 	}
 

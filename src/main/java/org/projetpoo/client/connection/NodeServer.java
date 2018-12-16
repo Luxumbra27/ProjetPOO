@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
-public class NodeServer {
+public class NodeServer implements Runnable{
 
     private int _port;
     private ServerSocket _serverSocket;
@@ -18,12 +18,18 @@ public class NodeServer {
         this._mainWindow = mainWindow;
     }
 
-    public void listen() throws Exception {
+    public void run(){
 
-        System.out.println("Client listening on port " + _port);
+        System.out.println("[DBG] Client listening on port: " + _port);
+        Socket sock;
         while (true) {
 
-            Socket sock = _serverSocket.accept();
+            try {
+                sock = _serverSocket.accept();
+            } catch (Exception e){
+                e.printStackTrace();
+                break;
+            }
             Chat chat = new Chat(sock, _mainWindow, _mainWindow.managementSystem.getRemoteUserBySocket(sock));
 
             Thread thread = new Thread(chat);

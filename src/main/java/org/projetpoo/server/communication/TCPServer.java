@@ -10,6 +10,8 @@ public class TCPServer {
     private int _port;
     private ServerSocket _serverSocket;
 
+    private static final int DEFAULT_LISTEN_PORT = 2000;
+
     public TCPServer(int port) throws Exception {
         _port = port;
         _serverSocket = new ServerSocket(port);
@@ -17,12 +19,12 @@ public class TCPServer {
 
     public void listen() throws Exception {
 
-        System.out.println("Listening on port " + _port);
+        System.out.println("[DBG] Listening on port " + _port);
         while (true) {
 
             NodeHandler handler = new NodeHandler(_serverSocket.accept());
 
-            System.out.println("New client connected");
+            System.out.println("[DBG] New client connected");
 
             Thread thread = new Thread(handler);
             thread.start();
@@ -32,7 +34,7 @@ public class TCPServer {
 
     public static void main(String[] args) throws Exception{
 
-        TCPServer serverInstance = new TCPServer(1234);
+        TCPServer serverInstance = new TCPServer(DEFAULT_LISTEN_PORT);
         try {
             serverInstance.listen();
         } catch (Exception e) {

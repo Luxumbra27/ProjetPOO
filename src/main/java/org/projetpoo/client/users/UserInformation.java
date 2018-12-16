@@ -1,6 +1,8 @@
 package org.projetpoo.client.users;
 
-public class UserInformation {
+import java.io.Serializable;
+
+public class UserInformation implements Serializable {
 
 	private String nickname ;
 	

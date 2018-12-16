@@ -1,43 +1,37 @@
 package org.projetpoo.client.users;
 
 import java.io.Serializable;
-import java.net.InetAddress;
 
 public class RemoteUser extends UserInformation implements Serializable {
 
-	private InetAddress clientAddress ;
-	private int clientPort ;
+	private String remoteHostname ;
+	private int remotePort ;
 	
-	public RemoteUser (String nickname, InetAddress clientAddress, int clientPort) {
+	public RemoteUser (String nickname, String remoteHostname, int remotePort) {
 
 		super(nickname);
-		this.clientAddress = clientAddress ;
-		this.clientPort = clientPort ;
+		this.remoteHostname = remoteHostname ;
+		this.remotePort = remotePort ;
 	}
 	
-	public void setIPAddress (InetAddress IPAddress) {
+	public void setIPAddress (String IPAddress) {
 
-		this.clientAddress = IPAddress ;
+		this.remoteHostname = IPAddress ;
 	}
 	
 	public void setPort (int port) {
 
-		this.clientPort = port ;
-		}
-	
-	public InetAddress getIPAddress () {
-
-		return this.clientAddress;
+		this.remotePort = port ;
 	}
 
-	public String getStringIP(){
+	public String getHostname(){
 
-		return clientAddress.getHostName();
+		return remoteHostname;
 	}
 	
 	public int getPort () {
 
-		return this.clientPort ;
+		return this.remotePort ;
 	}
 	 
 

@@ -43,11 +43,12 @@ public class UserInfoWidget extends Widget implements ActionListener {
         if (arg.getSource() == _connectButton){
             try {
                 if (!_managementSystem.isConnected()){
-                    System.out.println("[DBG] Attempting connection.");
+                    System.out.println("[DBG] Attempting connection...");
                     _managementSystem.connect();
-                    System.out.println("[DBG] Sending nickname.");
-                    _managementSystem.sendMessage("[NICKNAME]");
+                    System.out.println("[DBG] Logging in...");
+                    _managementSystem.sendMessage("login");
                     _managementSystem.sendMessage(_nicknameField.getText());
+                    println(_managementSystem.getReply());
                 }
                 println("You are connected !");
             } catch (Exception e){
