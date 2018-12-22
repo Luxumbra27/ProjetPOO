@@ -1,6 +1,7 @@
 package org.projetpoo.server.communication;
 
 import org.projetpoo.client.users.RemoteUser;
+import org.projetpoo.server.data.DatabaseConnection;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,13 +17,18 @@ public class NodeHandler implements Runnable {
     private PrintWriter _out;
     private BufferedReader _in;
     private ObjectOutputStream _outObj;
+    private DatabaseConnection _databaseConnection;
 
-    public NodeHandler(Socket socket) throws Exception{
+    private RemoteUser _remoteUser;
+
+    public NodeHandler(Socket socket, DatabaseConnection connection) throws Exception{
 
         _socket = socket;
         _out = new PrintWriter(_socket.getOutputStream(), true);
         _in = new BufferedReader(new InputStreamReader(_socket.getInputStream()));
         _outObj = new ObjectOutputStream(_socket.getOutputStream());
+        _databaseConnection = connection;
+
         _in.readLine(); // prevents initial bug
 
     }
@@ -40,12 +46,8 @@ public class NodeHandler implements Runnable {
 
 
     private void sendConnectedUsersList(){
-
-        RemoteUser testUser = new RemoteUser("debug2", "127.0.0.1", 1234);
-        ArrayList<RemoteUser> testList = new ArrayList<>();
-        testList.add(testUser);
         try {
-            _outObj.writeObject(testList);
+            _outObj.writeObject(_databaseConnection.getConnectedUsers());
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -53,11 +55,22 @@ public class NodeHandler implements Runnable {
 
 
     private void userLogin(String nickname){
-        if (nickname.equals("fail")){
+        if (_databaseConnection.checkExists(nickname)){
             _out.println("userExists");
         } else {
+            int listen_port = 0;
+            try {
+                listen_port = Integer.parseInt(_in.readLine());
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+            _remoteUser = new RemoteUser(nickname, _socket.getLocalAddress().getHostName(), listen_port);
+
+            _databaseConnection.addUser(_remoteUser);
+
             _out.println("userLoggedIn");
-            // TODO add/update user in database
         }
     }
 

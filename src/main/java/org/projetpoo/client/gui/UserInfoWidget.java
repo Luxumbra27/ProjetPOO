@@ -48,6 +48,9 @@ public class UserInfoWidget extends Widget implements ActionListener {
                     System.out.println("[DBG] Logging in...");
                     _managementSystem.sendMessage("login");
                     _managementSystem.sendMessage(_nicknameField.getText());
+
+                    _managementSystem.sendMessage(Integer.toString(MainWindow.NODE_LISTEN_PORT));
+
                     println(_managementSystem.getReply());
                 }
                 println("You are connected !");
