@@ -6,7 +6,7 @@
 
     <groupId>org.projetpoo</groupId>
     <artifactId>projetpoo</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <name>projetpoo</name>
     <!-- FIXME change it to the project's website -->
@@ -54,6 +54,14 @@
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>3.0.2</version>
+                    <configuration>
+                        <archive>
+                        <manifest>
+                            <!-- Jar file entry point -->
+                            <mainClass>org.projetpoo.client.gui.MainWindow</mainClass>
+                        </manifest>
+                        </archive>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
