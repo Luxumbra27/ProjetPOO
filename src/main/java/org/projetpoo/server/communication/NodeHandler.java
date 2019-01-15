@@ -55,23 +55,31 @@ public class NodeHandler implements Runnable {
 
 
     private void userLogin(String nickname){
-        if (_databaseConnection.checkExists(nickname)){
-            _out.println("userExists");
-        } else {
-            int listen_port = 0;
-            try {
-                listen_port = Integer.parseInt(_in.readLine());
-            } catch (Exception e){
-                e.printStackTrace();
+
+        Boolean isConnected = _databaseConnection.getUserStatusByNickName(nickname);
+
+        if (isConnected != null) {
+            if (isConnected) {
+                _out.println("userExists");
+                return;
             }
-
-
-            _remoteUser = new RemoteUser(nickname, _socket.getLocalAddress().getHostName(), listen_port);
-
-            _databaseConnection.addUser(_remoteUser);
-
-            _out.println("userLoggedIn");
         }
+
+        _out.println("getPort");
+
+        int listen_port = 0;
+        try {
+            listen_port = Integer.parseInt(_in.readLine());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        _remoteUser = new RemoteUser(nickname, _socket.getLocalAddress().getHostName(), listen_port);
+
+        _databaseConnection.addUser(_remoteUser);
+
+        System.out.println("[DBG] New user " + nickname + " is connected !");
     }
 
 

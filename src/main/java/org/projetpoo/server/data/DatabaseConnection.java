@@ -55,15 +55,17 @@ public class DatabaseConnection {
     }
 
 
-    public boolean checkExists(String name) {
-        boolean ret = false;
+    public boolean getUserStatusByNickName(String nickname) {
         try {
             Statement statement = _connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT name FROM Users where name = '" + name + "';");
-            ret = result.next();
+            ResultSet result = statement.executeQuery("SELECT name, state FROM Users where name = '" + nickname + "';");
+            boolean ret = result.next();
+            if (ret){
+                return result.getInt("state") == 1;
+            }
         } catch (Exception e){
             e.printStackTrace();
         }
-        return ret;
+        return false;
     }
 }
