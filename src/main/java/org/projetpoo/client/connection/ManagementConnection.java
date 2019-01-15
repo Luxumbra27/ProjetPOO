@@ -81,7 +81,7 @@ public class ManagementConnection{
 
     }
 
-    public RemoteUser getRemoteUserBySocket(Socket sock){
+    /*public RemoteUser getRemoteUserBySocket(Socket sock){
 		try{
 			updateConnectedUsers();
 		} catch (Exception e){
@@ -95,6 +95,6 @@ public class ManagementConnection{
 		}
 		System.out.println("[DBG] Can't find user in actual list.");
 		return null;
-	}
+	}*/
 
 }

@@ -30,7 +30,7 @@ public class NodeServer implements Runnable{
                 e.printStackTrace();
                 break;
             }
-            Chat chat = new Chat(sock, _mainWindow, _mainWindow.managementSystem.getRemoteUserBySocket(sock));
+            Chat chat = new Chat(sock, _mainWindow);
 
             Thread thread = new Thread(chat);
             thread.start();
