@@ -96,6 +96,7 @@ public class CommunityWidget extends Widget  implements ActionListener {
     }
 
     private void startChatAction(){
+
         Chat chat = new Chat(_mainWindow, _labelList.get(_selectedIndex).getAssociatedUser());
 
         Thread thread = new Thread(chat);
@@ -111,10 +112,13 @@ public class CommunityWidget extends Widget  implements ActionListener {
         UserLabel label;
         for (RemoteUser user: _managementSystem.getConnectedList()){
 
-            label = new UserLabel(user.getNickname(), user);
+            // We do not display the actual user
+            if (!(user.getNickname().equals(UserInfoWidget.userName))){
+                label = new UserLabel(user.getNickname(), user);
 
-            _labelList.add(label);
-            _listPanel.add(label);
+                _labelList.add(label);
+                _listPanel.add(label);
+            }
 
         }
         revalidate();
