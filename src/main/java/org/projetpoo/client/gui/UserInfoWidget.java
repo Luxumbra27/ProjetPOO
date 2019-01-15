@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 public class UserInfoWidget extends Widget implements ActionListener {
 
+    public static String userName;
     private ManagementConnection _managementSystem;
     private JButton _connectButton;
     private JTextArea _info;
@@ -45,15 +46,27 @@ public class UserInfoWidget extends Widget implements ActionListener {
                 if (!_managementSystem.isConnected()){
                     System.out.println("[DBG] Attempting connection...");
                     _managementSystem.connect();
-                    System.out.println("[DBG] Logging in...");
-                    _managementSystem.sendMessage("login");
-                    _managementSystem.sendMessage(_nicknameField.getText());
-
-                    _managementSystem.sendMessage(Integer.toString(MainWindow.NODE_LISTEN_PORT));
-
-                    println(_managementSystem.getReply());
                 }
-                println("You are connected !");
+
+                System.out.println("[DBG] Logging in...");
+                _managementSystem.sendMessage("login");
+                userName = _nicknameField.getText();
+                _managementSystem.sendMessage(userName);
+
+                switch (_managementSystem.getReply()) {
+
+                    case "getPort":
+                        _managementSystem.sendMessage(Integer.toString(MainWindow.NODE_LISTEN_PORT));
+                        println("Successfully connected !");
+                        break;
+                    case "userExists":
+                        println("Your login is already used !");
+                        break;
+                    default:
+                        System.out.println("[DBG] Server response not expected.");
+                        break;
+                }
+
             } catch (Exception e){
                 e.printStackTrace();
                 println("Connection problem.");

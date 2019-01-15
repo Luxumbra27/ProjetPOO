@@ -19,7 +19,7 @@ public class MainWindow extends JFrame{
     private static final String MANAGEMENT_HOSTNAME = "localhost";
     private static final int WINDOW_HEIGHT = 400;
     private static final int WINDOW_WIDTH = 800;
-    public static final int NODE_LISTEN_PORT = 1235;
+    public static int NODE_LISTEN_PORT = 1235;
 
     public MainWindow() throws Exception {
 
@@ -53,6 +53,8 @@ public class MainWindow extends JFrame{
     }
 
     public static void main (String[] args) throws Exception {
+
+        NODE_LISTEN_PORT = Integer.parseInt(args[0]);
 
         MainWindow window = new MainWindow();
 
