@@ -1,127 +1,83 @@
 package org.projetpoo.client.gui;
 
-import org.projetpoo.client.connection.Chat;
-import org.projetpoo.client.connection.ManagementConnection;
-import org.projetpoo.client.users.RemoteUser;
+import org.projetpoo.client.connection.CommunityController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-public class CommunityWidget extends Widget  implements ActionListener {
+public class CommunityWidget extends Widget {
 
-    private ManagementConnection _managementSystem;
-    private JButton _actButton;
-    private JButton _startChatButton;
-    private JPanel _listPanel;
-    private JButton _prevButton;
-    private JButton _nextButton;
-    private int _selectedIndex = 0;
-    private MainWindow _mainWindow;
-    private ArrayList<UserLabel> _labelList;
+    private CommunityController _communityController;
+    private DefaultListModel<String> userListModel;
 
 
-    public CommunityWidget(MainWindow mainWindow, ManagementConnection managementSystem) {
+    public CommunityWidget(CommunityController communityController) {
 
-        super(mainWindow.getContentPane());
-        this._mainWindow = mainWindow;
-        this._managementSystem = managementSystem;
+        super();
+        this._communityController = communityController;
+        userListModel = new DefaultListModel<>();
 
-        setLayout(new GridLayout(5, 1));
-
-        _listPanel = new JPanel();
-        add(_listPanel);
-
-        _actButton = new JButton("Update list.");
-        _actButton.addActionListener(this);
-        add(_actButton);
-
-        _prevButton = new JButton("Previous");
-        _prevButton.addActionListener(this);
-        add(_prevButton);
-
-        _nextButton = new JButton("Next");
-        _nextButton.addActionListener(this);
-        add(_nextButton);
-
-        _startChatButton = new JButton("Start chat.");
-        _startChatButton.addActionListener(this);
-        add(_startChatButton);
-
-        _labelList = new ArrayList<>();
-
+        initComponents();
     }
 
-    public void actionPerformed(ActionEvent arg){
-        if (arg.getSource() == _actButton){
-            try {
-                _managementSystem.updateConnectedUsers();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-            updateConnectedList();
-        }
-        if (arg.getSource() == _startChatButton){
-            startChatAction();
-        }
-        if (arg.getSource() == _nextButton){
-            nextButtonAction();
-        }
-        if (arg.getSource() == _prevButton){
-            prevButtonAction();
-        }
+    public void addUser(String userName) {
+        userListModel.addElement(userName);
     }
 
 
-    private void nextButtonAction(){
-        _labelList.get(_selectedIndex).setUnselected();
-        if (_selectedIndex == (_labelList.size() - 1)){
-            _selectedIndex = 0;
-        } else {
-            _selectedIndex++;
+    private void updateListButtonActionPerformed(ActionEvent e) {
+        userListModel.clear();
+        _communityController.updateConnectedList();
+    }
+
+    private void startChatButtonActionPerformed(ActionEvent e) {
+        _communityController.startChatWith(userList.getSelectedValue());
+    }
+
+
+    private void initComponents() {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Etienne de Prémare
+        scrollPane1 = new JScrollPane();
+        userList = new JList<>(userListModel);
+        updateListButton = new JButton();
+        startChatButton = new JButton();
+
+        //======== this ========
+
+        // JFormDesigner evaluation mark
+        setBorder(new javax.swing.border.CompoundBorder(
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+
+        setLayout(new GridLayout(3, 1));
+
+        //======== scrollPane1 ========
+        {
+            scrollPane1.setViewportView(userList);
         }
-        _labelList.get(_selectedIndex).setSelected();
+        add(scrollPane1);
+
+        //---- updateListButton ----
+        updateListButton.setText("Update List");
+        updateListButton.addActionListener(this::updateListButtonActionPerformed);
+        add(updateListButton);
+
+        //---- startChatButton ----
+        startChatButton.setText("Start Chat");
+        startChatButton.addActionListener(this::startChatButtonActionPerformed);
+        add(startChatButton);
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    private void prevButtonAction(){
-        _labelList.get(_selectedIndex).setUnselected();
-        if (_selectedIndex == 0){
-            _selectedIndex = (_labelList.size() - 1);
-        } else {
-            _selectedIndex--;
-        }
-        _labelList.get(_selectedIndex).setSelected();
-    }
-
-    private void startChatAction(){
-
-        Chat chat = new Chat(_mainWindow, _labelList.get(_selectedIndex).getAssociatedUser());
-
-        Thread thread = new Thread(chat);
-        thread.start();
-    }
-
-
-    private void updateConnectedList(){
-
-        System.out.println("[DBG] Updating displayed list: ");
-        _listPanel.removeAll();
-        _labelList.clear();
-        UserLabel label;
-        for (RemoteUser user: _managementSystem.getConnectedList()){
-
-            // We do not display the actual user
-            if (!(user.getNickname().equals(UserInfoWidget.userName))){
-                label = new UserLabel(user.getNickname(), user);
-
-                _labelList.add(label);
-                _listPanel.add(label);
-            }
-
-        }
-        revalidate();
-    }
-
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Etienne de Prémare
+    private JScrollPane scrollPane1;
+    private JList<String> userList;
+    private JButton updateListButton;
+    private JButton startChatButton;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

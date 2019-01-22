@@ -1,6 +1,6 @@
 package org.projetpoo.client.gui;
 
-import org.projetpoo.client.connection.Chat;
+import org.projetpoo.client.connection.ChatController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,16 +9,16 @@ import java.awt.event.ActionListener;
 
 public class ChatWidget extends Widget implements ActionListener {
 
-    private Chat _chat;
+    private ChatController _chatController;
     /*private JTextArea _discussion;
     private JTextArea _input;
     private JButton _sendButton;*/
 
-    public ChatWidget(Container container, Chat chat) {
+    public ChatWidget(ChatController chatController) {
 
-        super(container);
+        super();
 
-        this._chat = chat;
+        this._chatController = chatController;
 
         initComponents();
 
@@ -32,7 +32,7 @@ public class ChatWidget extends Widget implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == _sendButton){
-            _chat.sendMessage(_input.getText());
+            _chatController.sendMessage(_input.getText());
         }
     }
 

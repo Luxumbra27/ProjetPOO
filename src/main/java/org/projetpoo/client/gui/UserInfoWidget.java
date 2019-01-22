@@ -15,8 +15,8 @@ public class UserInfoWidget extends Widget implements ActionListener {
     private JTextArea _info;
     private JTextField _nicknameField;
 
-    public UserInfoWidget(Container container, ManagementConnection managementSystem) {
-        super(container);
+    public UserInfoWidget(ManagementConnection managementSystem) {
+        super();
         this._managementSystem = managementSystem;
 
         _nicknameField = new JTextField();

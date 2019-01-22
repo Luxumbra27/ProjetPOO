@@ -7,12 +7,9 @@ import java.awt.*;
 
 public class Widget extends JPanel {
 
-    protected Container _container;
 
-    public Widget(Container container) {
+    public Widget() {
         super();
-        this._container = container;
-        _container.add(this);
 
     }
 
