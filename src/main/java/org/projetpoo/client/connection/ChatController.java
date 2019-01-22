@@ -20,7 +20,7 @@ public class Chat implements Runnable {
     private RemoteUser _remoteUser;
 
     public Chat(MainWindow mainWindow, RemoteUser remoteUser){
-        // On chat request send
+        // On chat init send
 
         this._remoteUser = remoteUser;
         this._chatWidget = new ChatWidget(mainWindow.getContentPane(), this);
@@ -38,7 +38,7 @@ public class Chat implements Runnable {
     }
 
     public Chat(Socket socket, MainWindow mainWindow){
-        // On chat request reception
+        // On chat init reception
 
         this._socket = socket;
         this._chatWidget = new ChatWidget(mainWindow.getContentPane(), this);
