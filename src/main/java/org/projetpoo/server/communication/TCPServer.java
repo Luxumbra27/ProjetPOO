@@ -29,8 +29,7 @@ public class TCPServer {
 
             System.out.println("[DBG] New client connected");
 
-            Thread thread = new Thread(handler);
-            thread.start();
+            handler.start();
         }
     }
 

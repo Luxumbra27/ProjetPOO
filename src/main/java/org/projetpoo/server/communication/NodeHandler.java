@@ -8,10 +8,9 @@ import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
 
 
-public class NodeHandler implements Runnable {
+public class NodeHandler extends Thread {
 
     private Socket _socket;
     private PrintWriter _out;
@@ -30,6 +29,13 @@ public class NodeHandler implements Runnable {
         _databaseConnection = connection;
 
         _in.readLine(); // prevents initial bug
+
+        // In case of a socket error, the user is disconnected
+        this.setUncaughtExceptionHandler((th, ex) -> {
+            _databaseConnection.setDisconnected(_remoteUser);
+            System.out.println("[DBG] User " + _remoteUser.getNickname() + " disconnected.");
+            ex.printStackTrace();
+        });
 
     }
 
@@ -57,11 +63,14 @@ public class NodeHandler implements Runnable {
     private void userLogin(String nickname){
 
         Boolean isConnected = _databaseConnection.getUserStatusByNickName(nickname);
+        Boolean notNew = false;
 
         if (isConnected != null) {
             if (isConnected) {
                 _out.println("userExists");
                 return;
+            } else {
+                notNew = true;
             }
         }
 
@@ -74,13 +83,21 @@ public class NodeHandler implements Runnable {
             e.printStackTrace();
         }
 
-
         _remoteUser = new RemoteUser(nickname, _socket.getLocalAddress().getHostName(), listen_port);
 
-        _databaseConnection.addUser(_remoteUser);
+        if (notNew){
+            _databaseConnection.setConnected(_remoteUser);
+        } else {
+            _databaseConnection.addUser(_remoteUser);
+        }
 
-        System.out.println("[DBG] New user " + nickname + " is connected !");
+
+        System.out.println("[DBG] User " + nickname + " connected.");
     }
+
+    /*public void userUpdate(String nickName){
+
+    }*/
 
 
     public void run(){
@@ -89,10 +106,12 @@ public class NodeHandler implements Runnable {
         String recv;
 
         while(_socket.isConnected()){
+
             recv = getLastLine();
+
             switch (recv){
                 case "getConnectedUsers":
-                    System.out.println("[DBG] get connected users ");
+                    System.out.println("[DBG] Get connected users command. ");
                     sendConnectedUsersList();
                     break;
                 case "login":

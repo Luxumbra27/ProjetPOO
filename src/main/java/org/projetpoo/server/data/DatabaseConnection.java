@@ -68,4 +68,23 @@ public class DatabaseConnection {
         }
         return false;
     }
+
+
+    public void setDisconnected(RemoteUser user){
+        try {
+            Statement statement = _connection.createStatement();
+            statement.executeUpdate("UPDATE Users SET state = 0 WHERE name = '" + user.getNickname() + "';");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setConnected(RemoteUser user){
+        try {
+            Statement statement = _connection.createStatement();
+            statement.executeUpdate("UPDATE Users SET state = 1, port = " + user.getPort() + ", ip = " + user.getHostname() + " WHERE name = '" + user.getNickname() + "';");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
