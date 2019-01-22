@@ -17,7 +17,6 @@ public class ManagementConnection{
 	private PrintWriter _out;
 	private ObjectOutputStream _outObj;
 	private ObjectInputStream _inObj;
-	private ArrayList<RemoteUser> _connectedList;
 
 
 	public ManagementConnection(String name, int remoteP){
@@ -27,7 +26,7 @@ public class ManagementConnection{
 
 	}
 
-	public void updateConnectedUsers() throws Exception {
+	public ArrayList<RemoteUser> getConnectedUsers() throws Exception {
 		_out.println("getConnectedUsers");
 		ArrayList<RemoteUser> lst = null;
 		try {
@@ -38,13 +37,10 @@ public class ManagementConnection{
 		if (lst == null){
  			throw new Exception("Could not retrieve connected users list.");
 		} else {
-			_connectedList = lst;
+			return lst;
 		}
 	}
 
-	public ArrayList<RemoteUser> getConnectedList(){
-		return _connectedList;
-	}
 
 	public boolean isConnected(){
 		if (_socket != null){

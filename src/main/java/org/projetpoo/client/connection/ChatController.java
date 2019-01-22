@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
-public class Chat implements Runnable {
+public class ChatController implements Runnable {
 
     private Socket _socket;
     private BufferedReader _in;
@@ -19,11 +19,12 @@ public class Chat implements Runnable {
     private ChatWidget _chatWidget;
     private RemoteUser _remoteUser;
 
-    public Chat(MainWindow mainWindow, RemoteUser remoteUser){
+    public ChatController(MainWindow mainWindow, RemoteUser remoteUser){
         // On chat init send
 
         this._remoteUser = remoteUser;
-        this._chatWidget = new ChatWidget(mainWindow.getContentPane(), this);
+        this._chatWidget = new ChatWidget(this);
+        mainWindow.getContentPane().add(_chatWidget);
         try {
             _socket = new Socket(_remoteUser.getHostname(), _remoteUser.getPort());
             this._out = new PrintWriter(_socket.getOutputStream(),true);
@@ -37,11 +38,12 @@ public class Chat implements Runnable {
         mainWindow.revalidate();
     }
 
-    public Chat(Socket socket, MainWindow mainWindow){
+    public ChatController(Socket socket, MainWindow mainWindow){
         // On chat init reception
 
         this._socket = socket;
-        this._chatWidget = new ChatWidget(mainWindow.getContentPane(), this);
+        this._chatWidget = new ChatWidget(this);
+        mainWindow.getContentPane().add(_chatWidget);
 
         try {
 
