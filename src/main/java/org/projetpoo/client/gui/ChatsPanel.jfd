@@ -1,0 +1,18 @@
+JFDML JFormDesigner: "7.0.0.0.142" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) {
+			"hgap": 10
+			"vgap": 10
+		} ) {
+			name: "this"
+			"minimumSize": new java.awt.Dimension( 300, 300 )
+			"preferredSize": new java.awt.Dimension( 400, 400 )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

@@ -1,70 +1,90 @@
 package org.projetpoo.client.gui;
 
 
+import com.bulenkov.darcula.DarculaLaf;
+import org.projetpoo.client.connection.ChatController;
 import org.projetpoo.client.connection.CommunityController;
 import org.projetpoo.client.connection.ManagementConnection;
 import org.projetpoo.client.connection.NodeServer;
+import org.projetpoo.client.users.LocalUserController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 
 
-public class MainWindow extends JFrame{
+public class MainWindow extends JFrame {
 
-    public UserInfoWidget userInfoWidget;
-    public JPanel contentPane;
-    public ManagementConnection managementSystem;
-    public CommunityController communityController;
-
-    public static final int MANAGEMENT_PORT = 2000;
+    private static final int MANAGEMENT_PORT = 2000;
     private static final String MANAGEMENT_HOSTNAME = "localhost";
-    public static final int DISCOVERY_PORT = 2000;
-    private static final int WINDOW_HEIGHT = 400;
-    private static final int WINDOW_WIDTH = 800;
-    public static int NODE_LISTEN_PORT = 1235;
+    public static LocalUserController localUser;
+    public static ManagementConnection managementSystem;
+    public static CommunityController communityController;
+    public static ChatsPanel chatsPanel;
+    public static HashMap<String, ChatController> activeChats = new HashMap<>();
+    public static int NODE_LISTEN_PORT;
 
-    public MainWindow() throws Exception {
+    public MainWindow(){
 
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-        setTitle("POO TeamChat");
-        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        try{
+            //UIManager.setLookAndFeel(new MaterialLookAndFeel());
+            UIManager.setLookAndFeel(new DarculaLaf());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
-        contentPane = new JPanel();
-        contentPane.setBackground(Color.DARK_GRAY);
-
-        setContentPane(contentPane);
-        setLayout(new GridBagLayout());
+        initComponents();
 
         managementSystem = new ManagementConnection(MANAGEMENT_HOSTNAME, MANAGEMENT_PORT);
 
-        userInfoWidget = new UserInfoWidget(managementSystem);
-        getContentPane().add(userInfoWidget);
-        userInfoWidget.println("Hello !");
-
-        communityController = new CommunityController(this, managementSystem);
-
+        localUser = new LocalUserController(managementSystem, this);
 
         setVisible(true);
+        pack();
     }
 
-    public void addComponent(JComponent comp){
+    public static void main(String[] args) throws Exception {
 
-        getContentPane().add(comp);
+        new MainWindow();
 
-    }
-
-    public static void main (String[] args) throws Exception {
-
-        NODE_LISTEN_PORT = Integer.parseInt(args[0]);
-
-        MainWindow window = new MainWindow();
-
-        NodeServer nodeServer = new NodeServer(NODE_LISTEN_PORT, window);
+        NodeServer nodeServer = new NodeServer();
 
         Thread thread = new Thread(nodeServer);
         thread.start();
 
     }
+
+    public void goToChat() {
+
+        setTitle("Clavardage - " + localUser.userInformation.getUsername());
+        setContentPane(new JPanel(new BorderLayout()));
+
+        communityController = new CommunityController(managementSystem);
+
+        chatsPanel = new ChatsPanel();
+
+        getContentPane().add(communityController.communityWidget, BorderLayout.WEST);
+        getContentPane().add(chatsPanel, BorderLayout.CENTER);
+
+        pack();
+    }
+
+    private void initComponents() {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Etienne de Prémare
+
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Enter your name:");
+        setMinimumSize(new Dimension(340, 200));
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
+        pack();
+        setLocationRelativeTo(getOwner());
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Etienne de Prémare
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

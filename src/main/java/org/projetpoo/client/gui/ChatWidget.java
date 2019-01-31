@@ -5,14 +5,12 @@ import org.projetpoo.client.connection.ChatController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class ChatWidget extends Widget implements ActionListener {
+public class ChatWidget extends Widget {
 
     private ChatController _chatController;
-    /*private JTextArea _discussion;
-    private JTextArea _input;
-    private JButton _sendButton;*/
+    private Font sentFont;
+    private Font receivedFont;
 
     public ChatWidget(ChatController chatController) {
 
@@ -22,18 +20,30 @@ public class ChatWidget extends Widget implements ActionListener {
 
         initComponents();
 
-
+        sentFont = new Font(getFont().getFontName(), Font.ITALIC, 14);
+        receivedFont = new Font(getFont().getFontName(), Font.BOLD, 13);
     }
 
-    public void println(String str){
+    public void printReceived(String str) {
+        setFont(receivedFont);
+        _discussion.append( str + "\n");
+    }
+
+
+    private void printSent(String str){
+        setFont(sentFont);
         _discussion.append(str + "\n");
     }
 
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == _sendButton){
-            _chatController.sendMessage(_input.getText());
-        }
+    private void _sendButtonActionPerformed(ActionEvent e) {
+        _chatController.sendMessage(_input.getText());
+        printSent(" > " + _input.getText());
+        _input.setText("");
+    }
+
+    private void _closeButtonActionPerformed(ActionEvent e) {
+        _chatController.close();
     }
 
 
@@ -44,9 +54,10 @@ public class ChatWidget extends Widget implements ActionListener {
         _discussion = new JTextArea();
         _input = new JTextArea();
         _sendButton = new JButton();
-        button2 = new JButton();
+        _closeButton = new JButton();
 
         //======== this ========
+        setMinimumSize(new Dimension(200, 300));
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -58,39 +69,41 @@ public class ChatWidget extends Widget implements ActionListener {
         setLayout(new GridBagLayout());
         ((GridBagLayout)getLayout()).columnWidths = new int[] {0, 0};
         ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0};
-        ((GridBagLayout)getLayout()).columnWeights = new double[] {0.0, 1.0E-4};
-        ((GridBagLayout)getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0E-4};
+        ((GridBagLayout)getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+        ((GridBagLayout)getLayout()).rowWeights = new double[] {1.0, 1.0, 1.0, 1.0, 1.0E-4};
 
         //======== scrollPane1 ========
         {
 
             //---- _discussion ----
             _discussion.setEditable(false);
+            _discussion.setRows(14);
             scrollPane1.setViewportView(_discussion);
         }
         add(scrollPane1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.BASELINE, GridBagConstraints.HORIZONTAL,
-            new Insets(0, 0, 6, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
+
+        //---- _input ----
+        _input.setTabSize(4);
+        _input.setRows(4);
         add(_input, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
-            GridBagConstraints.BASELINE, GridBagConstraints.HORIZONTAL,
-            new Insets(0, 0, 6, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
 
         //---- _sendButton ----
         _sendButton.setText("Send");
-        _sendButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ChatWidget.this.actionPerformed(e);
-            }
-        });
+        _sendButton.setMargin(new Insets(5, 5, 5, 5));
+        _sendButton.addActionListener(e -> _sendButtonActionPerformed(e));
         add(_sendButton, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-            GridBagConstraints.BASELINE, GridBagConstraints.HORIZONTAL,
-            new Insets(0, 0, 6, 0), 0, 0));
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
 
-        //---- button2 ----
-        button2.setText("Test");
-        add(button2, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
-            GridBagConstraints.BASELINE, GridBagConstraints.HORIZONTAL,
+        //---- _closeButton ----
+        _closeButton.setText("Close");
+        _closeButton.addActionListener(e -> _closeButtonActionPerformed(e));
+        add(_closeButton, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 0, 0), 0, 0));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
@@ -101,6 +114,6 @@ public class ChatWidget extends Widget implements ActionListener {
     private JTextArea _discussion;
     private JTextArea _input;
     private JButton _sendButton;
-    private JButton button2;
+    private JButton _closeButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -30,6 +30,22 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.25.2</version>
         </dependency>
+        <dependency>
+            <groupId>mdlaf</groupId>
+            <artifactId>mdlaf</artifactId>
+            <scope>system</scope>
+            <version>1.0.0</version>
+            <systemPath>${project.basedir}/lib/material-ui-swing.jar</systemPath>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>darcula</groupId>
+            <artifactId>darcula</artifactId>
+            <scope>system</scope>
+            <version>1.0.0</version>
+            <systemPath>${project.basedir}/lib/darcula.jar</systemPath>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>

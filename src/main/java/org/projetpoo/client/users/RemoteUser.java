@@ -4,35 +4,35 @@ import java.io.Serializable;
 
 public class RemoteUser extends UserInformation implements Serializable {
 
-	private String remoteHostname ;
-	private int remotePort ;
-	
-	public RemoteUser (String nickname, String remoteHostname, int remotePort) {
+    private String remoteHostname;
+    private int remotePort;
 
-		super(nickname);
-		this.remoteHostname = remoteHostname ;
-		this.remotePort = remotePort ;
-	}
-	
-	public void setIPAddress (String IPAddress) {
+    public RemoteUser(String nickname, String remoteHostname, int remotePort) {
 
-		this.remoteHostname = IPAddress ;
-	}
-	
-	public void setPort (int port) {
+        super(nickname);
+        this.remoteHostname = remoteHostname;
+        this.remotePort = remotePort;
+    }
 
-		this.remotePort = port ;
-	}
+    public void setIPAddress(String IPAddress) {
 
-	public String getHostname(){
+        this.remoteHostname = IPAddress;
+    }
 
-		return remoteHostname;
-	}
-	
-	public int getPort () {
+    public String getHostname() {
 
-		return this.remotePort ;
-	}
-	 
+        return remoteHostname;
+    }
+
+    public int getPort() {
+
+        return this.remotePort;
+    }
+
+    public void setPort(int port) {
+
+        this.remotePort = port;
+    }
+
 
 }

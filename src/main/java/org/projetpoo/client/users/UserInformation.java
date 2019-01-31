@@ -4,24 +4,24 @@ import java.io.Serializable;
 
 public class UserInformation implements Serializable {
 
-	private String nickname ;
-	
-	public UserInformation (String nickname) {
+    private String _username;
 
-		this.nickname = nickname;
+    UserInformation(String username) {
 
-	}
-	
-	public void setNickname (String nickname) {
+        this._username = username;
 
-		this.nickname = nickname;
+    }
 
-	}
-	
-	public String getNickname () {
+    public String getUsername() {
 
-		return this.nickname ;
+        return this._username;
 
-	}
-	
+    }
+
+    void setUsername(String username) {
+
+        this._username = username;
+
+    }
+
 }

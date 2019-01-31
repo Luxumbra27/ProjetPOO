@@ -6,19 +6,18 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
-public class NodeServer implements Runnable{
+public class NodeServer implements Runnable {
 
     private int _port;
     private ServerSocket _serverSocket;
-    private MainWindow _mainWindow;
 
-    public NodeServer(int port, MainWindow mainWindow) throws Exception {
-        this._port = port;
-        this._serverSocket = new ServerSocket(port);
-        this._mainWindow = mainWindow;
+    public NodeServer() throws Exception {
+        this._serverSocket = new ServerSocket(0);
+        this._port = _serverSocket.getLocalPort();
+        MainWindow.NODE_LISTEN_PORT = _port;
     }
 
-    public void run(){
+    public void run() {
 
         System.out.println("[DBG] Client listening on port: " + _port);
         Socket sock;
@@ -26,11 +25,14 @@ public class NodeServer implements Runnable{
 
             try {
                 sock = _serverSocket.accept();
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
                 break;
             }
-            ChatController chatController = new ChatController(sock, _mainWindow);
+
+            MainWindow.communityController.updateConnectedList();
+
+            ChatController chatController = new ChatController(sock);
 
             Thread thread = new Thread(chatController);
             thread.start();

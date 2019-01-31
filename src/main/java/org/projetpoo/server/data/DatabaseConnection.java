@@ -44,7 +44,7 @@ public class DatabaseConnection {
     public void addUser(RemoteUser user) {
         try {
             Statement statement = _connection.createStatement();
-            statement.executeUpdate("INSERT INTO Users VALUES ('" + user.getNickname() + "', '"
+            statement.executeUpdate("INSERT INTO Users VALUES ('" + user.getUsername() + "', '"
                     + user.getHostname() + "', "
                     + user.getPort() + ", 1);"
             );
@@ -55,36 +55,43 @@ public class DatabaseConnection {
     }
 
 
-    public boolean getUserStatusByNickName(String nickname) {
-        try {
-            Statement statement = _connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT name, state FROM Users where name = '" + nickname + "';");
-            boolean ret = result.next();
-            if (ret){
-                return result.getInt("state") == 1;
-            }
-        } catch (Exception e){
-            e.printStackTrace();
+    public boolean getUserStatusByNickName(String nickname) throws Exception {
+        Statement statement = _connection.createStatement();
+        ResultSet result = statement.executeQuery("SELECT name, state FROM Users where name = '" + nickname + "';");
+        boolean ret = result.next();
+        if (ret) {
+            return (result.getInt("state") == 1);
+        } else {
+            throw new Exception("User not found.");
         }
-        return false;
     }
 
 
-    public void setDisconnected(RemoteUser user){
+    public void setDisconnected(RemoteUser user) {
         try {
             Statement statement = _connection.createStatement();
-            statement.executeUpdate("UPDATE Users SET state = 0 WHERE name = '" + user.getNickname() + "';");
-        } catch (Exception e){
+            statement.executeUpdate("UPDATE Users SET state = 0 WHERE name = '" + user.getUsername() + "';");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void setConnected(RemoteUser user){
+    public void setConnected(RemoteUser user) {
         try {
             Statement statement = _connection.createStatement();
-            statement.executeUpdate("UPDATE Users SET state = 1, port = " + user.getPort() + ", ip = " + user.getHostname() + " WHERE name = '" + user.getNickname() + "';");
-        } catch (Exception e){
+            statement.executeUpdate("UPDATE Users SET state = 1, port = " + user.getPort() + ", ip = '" + user.getHostname() + "' WHERE name = '" + user.getUsername() + "';");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public void disconnectAll() {
+        try {
+            Statement statement = _connection.createStatement();
+            statement.executeUpdate("UPDATE Users SET state = 0;");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -20,7 +20,7 @@ public class NodeHandler extends Thread {
 
     private RemoteUser _remoteUser;
 
-    public NodeHandler(Socket socket, DatabaseConnection connection) throws Exception{
+    NodeHandler(Socket socket, DatabaseConnection connection) throws Exception {
 
         _socket = socket;
         _out = new PrintWriter(_socket.getOutputStream(), true);
@@ -33,7 +33,7 @@ public class NodeHandler extends Thread {
         // In case of a socket error, the user is disconnected
         this.setUncaughtExceptionHandler((th, ex) -> {
             _databaseConnection.setDisconnected(_remoteUser);
-            System.out.println("[DBG] User " + _remoteUser.getNickname() + " disconnected.");
+            System.out.println("[DBG] User " + _remoteUser.getUsername() + " disconnected.");
             ex.printStackTrace();
         });
 
@@ -43,35 +43,37 @@ public class NodeHandler extends Thread {
     private String getLastLine() {
         String input = null;
         try {
-            input =_in.readLine();
-        } catch (Exception e){
+            input = _in.readLine();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return input;
     }
 
 
-    private void sendConnectedUsersList(){
+    private void sendConnectedUsersList() {
         try {
             _outObj.writeObject(_databaseConnection.getConnectedUsers());
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    private void userLogin(String nickname){
+    private void userLogin(String nickname) {
 
-        Boolean isConnected = _databaseConnection.getUserStatusByNickName(nickname);
-        Boolean notNew = false;
+        boolean isConnected = false;
+        boolean New = false;
+        try {
+            isConnected = _databaseConnection.getUserStatusByNickName(nickname);
+        } catch (Exception e) {
+            //e.printStackTrace();
+            New = true;
+        }
 
-        if (isConnected != null) {
-            if (isConnected) {
-                _out.println("userExists");
-                return;
-            } else {
-                notNew = true;
-            }
+        if (isConnected) {
+            _out.println("userExists");
+            return;
         }
 
         _out.println("getPort");
@@ -79,37 +81,33 @@ public class NodeHandler extends Thread {
         int listen_port = 0;
         try {
             listen_port = Integer.parseInt(_in.readLine());
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         _remoteUser = new RemoteUser(nickname, _socket.getLocalAddress().getHostName(), listen_port);
 
-        if (notNew){
-            _databaseConnection.setConnected(_remoteUser);
-        } else {
+        if (New) {
             _databaseConnection.addUser(_remoteUser);
+        } else {
+            _databaseConnection.setConnected(_remoteUser);
         }
 
 
         System.out.println("[DBG] User " + nickname + " connected.");
     }
 
-    /*public void userUpdate(String nickName){
 
-    }*/
-
-
-    public void run(){
+    public void run() {
 
         System.out.println("[DBG]" + _socket.getRemoteSocketAddress());
         String recv;
 
-        while(_socket.isConnected()){
+        while (_socket.isConnected()) {
 
             recv = getLastLine();
 
-            switch (recv){
+            switch (recv) {
                 case "getConnectedUsers":
                     System.out.println("[DBG] Get connected users command. ");
                     sendConnectedUsersList();
@@ -122,6 +120,5 @@ public class NodeHandler extends Thread {
                     break;
             }
         }
-
     }
 }

@@ -2,7 +2,6 @@ package org.projetpoo.client.connection;
 
 import org.projetpoo.client.gui.ChatWidget;
 import org.projetpoo.client.gui.MainWindow;
-import org.projetpoo.client.gui.UserInfoWidget;
 import org.projetpoo.client.users.RemoteUser;
 
 import java.io.BufferedReader;
@@ -13,66 +12,91 @@ import java.util.concurrent.TimeUnit;
 
 public class ChatController implements Runnable {
 
+    private ChatWidget chatWidget;
     private Socket _socket;
     private BufferedReader _in;
     private PrintWriter _out;
-    private ChatWidget _chatWidget;
     private RemoteUser _remoteUser;
+    private boolean _open = false;
 
-    public ChatController(MainWindow mainWindow, RemoteUser remoteUser){
+    ChatController(RemoteUser remoteUser) {
         // On chat init send
-
         this._remoteUser = remoteUser;
-        this._chatWidget = new ChatWidget(this);
-        mainWindow.getContentPane().add(_chatWidget);
+        this.chatWidget = new ChatWidget(this);
+        MainWindow.chatsPanel.add(chatWidget);
+        MainWindow.activeChats.put(_remoteUser.getUsername(), this);
+
         try {
             _socket = new Socket(_remoteUser.getHostname(), _remoteUser.getPort());
-            this._out = new PrintWriter(_socket.getOutputStream(),true);
+            this._out = new PrintWriter(_socket.getOutputStream(), true);
             this._in = new BufferedReader(new InputStreamReader(_socket.getInputStream()));
-            _out.println(UserInfoWidget.userName);
-        } catch (Exception e){
+            _out.println(MainWindow.localUser.userInformation.getUsername());
+            _open = true;
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        MainWindow.communityController.communityWidget.nextChat();
 
-        mainWindow.addComponent(_chatWidget);
-        mainWindow.revalidate();
     }
 
-    public ChatController(Socket socket, MainWindow mainWindow){
+    ChatController(Socket socket) {
         // On chat init reception
 
         this._socket = socket;
-        this._chatWidget = new ChatWidget(this);
-        mainWindow.getContentPane().add(_chatWidget);
+        this.chatWidget = new ChatWidget(this);
 
         try {
 
-            this._out = new PrintWriter(_socket.getOutputStream(),true);
+            this._out = new PrintWriter(_socket.getOutputStream(), true);
             this._in = new BufferedReader(new InputStreamReader(_socket.getInputStream()));
             _remoteUser = new RemoteUser(_in.readLine(), _socket.getLocalAddress().getHostName(), _socket.getPort());
-
-        } catch (Exception e){
+            _open = true;
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        mainWindow.addComponent(_chatWidget);
-        mainWindow.revalidate();
-
+        MainWindow.chatsPanel.add(chatWidget);
+        MainWindow.activeChats.put(_remoteUser.getUsername(), this);
+        MainWindow.communityController.communityWidget.nextChat();
     }
 
 
-    public void sendMessage(String str){
+    public void sendMessage(String str) {
         _out.println(str);
     }
 
-    public void run(){
+    public void close() {
+        if (_open) {
+            _open = false;
+            try {
+                _in.close();
+                _out.close();
+                _socket.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
-        while (true){
+    boolean isOpen() {
+        return _open;
+    }
+
+
+    public void run() {
+
+        while (_open) {
             try {
                 TimeUnit.MILLISECONDS.sleep(500);
-                _chatWidget.println(_in.readLine());
-            } catch (Exception e){
+                String recv = _in.readLine();
+                if (recv != null){
+                    chatWidget.printReceived(_remoteUser.getUsername() + " : " + recv);
+                } else {
+                    chatWidget.printReceived("Chat ended.");
+                    close();
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

@@ -1,39 +1,43 @@
-JFDML JFormDesigner: "6.0.5.0.178" Java: "10.0.2" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.142" Java: "10.0.2" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-			"$columnSpecs": "0"
-			"$rowSpecs": "baseline:0, baseline:0, baseline:0, baseline:0"
-			"$hGap": 6
-			"$vGap": 6
+			"$columnSpecs": "0:1.0"
+			"$rowSpecs": "0:1.0, 0:1.0, 0:1.0, 0:1.0"
 			"$alignTop": true
 			"$alignLeft": true
 		} ) {
 			name: "this"
+			"minimumSize": new java.awt.Dimension( 200, 300 )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "_discussion"
 					"editable": false
+					"rows": 14
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 			add( new FormComponent( "javax.swing.JTextArea" ) {
 				name: "_input"
+				"tabSize": 4
+				"rows": 4
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridy": 1
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "_sendButton"
 				"text": "Send"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "actionPerformed", true ) )
+				"margin": new java.awt.Insets( 5, 5, 5, 5 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "_sendButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridy": 2
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
-				"text": "Test"
+				name: "_closeButton"
+				"text": "Close"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "_closeButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridy": 3
 			} )

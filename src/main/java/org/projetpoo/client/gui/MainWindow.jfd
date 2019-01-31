@@ -1,0 +1,16 @@
+JFDML JFormDesigner: "6.0.5.0.178" Java: "10.0.2" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			"title": "Clavardage"
+			"minimumSize": new java.awt.Dimension( 300, 200 )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}
