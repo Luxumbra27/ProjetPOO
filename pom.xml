@@ -92,15 +92,26 @@
                     <artifactId>exec-maven-plugin</artifactId>
                     <executions>
                         <execution>
+                            <id>start-client</id>
+                            <configuration>
+                                <mainClass>org.projetpoo.client.gui.MainWindow </mainClass>
+                                <classpathScope>compile</classpathScope>
+                            </configuration>
+                            <goals>
+                                <goal>java</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>start-server</id>
+                            <configuration>
+                                <mainClass>org.projetpoo.server.communication.TCPServer</mainClass>
+                                <classpathScope>compile</classpathScope>
+                            </configuration>
                             <goals>
                                 <goal>java</goal>
                             </goals>
                         </execution>
                     </executions>
-                    <configuration>
-                        <mainClass>org.projetpoo.server.communication.TCPServer</mainClass>
-                        <!-- <mainClass>org.projetpoo.client.gui.MainWindow </mainClass> -->
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
