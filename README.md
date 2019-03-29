@@ -21,6 +21,7 @@
     >mvn exec:java@start-server
 * Start one client interface
     >mvn exec:java@start-client
+    >or execute the launch_client file
 
 ## How to use the interface
 * Enter your user name on the first window  
